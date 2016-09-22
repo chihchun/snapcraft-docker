@@ -1,4 +1,4 @@
-# A Docker image for build Ubuntu snaps.
+# Docker image for building Ubuntu snaps
 
 This image includes toolchains and [Snapcraft](https://snapcraft.io) to help app and hardware enablement engineers to build a snap software package and [Ubuntu Core](https://developer.ubuntu.com/en/snappy/) image from Ubuntu or other Docker supported platform.
 
@@ -44,7 +44,7 @@ If you like to build arm target snap on amd64 hardware platform, please install 
 # Known issue
 * Your user id on docker host must be between 1000-1100 to be able to use _sudo apt-get_ from snapcraft.
 * docker will create the volume folder with root permission, which will leave ./.local/share/snapcraft ./snap in current build folder.
-* snapcraft will use cpu type as platform, which will greate wrong name space.
+* snapcraft will generate amd64 named snap in i386 container, if you are running from amd64 docker host.
 
 # TODO
 * Support build multi-architecture snap.
