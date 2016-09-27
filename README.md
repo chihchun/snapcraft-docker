@@ -14,8 +14,8 @@ Supported architectures
 You can run the docker image by
 
     alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
-    	-v ${HOME}/.snap:/build/.snap \
-    	-v ${HOME}/.local/share/snapcraft:/build/.local/share/snapcraft \
+    	-v ${HOME}/.snap:/home/.snap \
+    	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
     	snapcraft/xenial-amd64 snapcraft'
 
     snapcraft-docker tour
@@ -29,8 +29,8 @@ You can run the armhf and arm64 images on native arm architecture platform.
 
     # Running arm64 image
     alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
-    	-v ${HOME}/.snap:/build/.snap \
-    	-v ${HOME}/.local/share/snapcraft:/build/.local/share/snapcraft \
+    	-v ${HOME}/.snap:/home/.snap \
+    	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
     	snapcraft/xenial-arm64 snapcraft'
 
     snapcraft-docker tour
@@ -43,7 +43,6 @@ If you like to build arm target snap on amd64 hardware platform, please install 
 
 # Known issue
 * Your user id on docker host must be between 500-1100 to be able to use _sudo apt-get_ from snapcraft.
-* docker will create the volume folder with root permission, which will leave ./.local/share/snapcraft and ./snap in current build folder.
 * snapcraft will generate amd64 named snap in i386 container, if you are running from amd64 docker host.
 
 Please report issues to https://github.com/chihchun/snapcraft-docker/issues

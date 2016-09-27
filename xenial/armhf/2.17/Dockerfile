@@ -44,7 +44,7 @@ RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/
 RUN apt-get clean
 
 # snapcraft need to save configs in ${HOME}/.local
-ENV HOME /build
+ENV HOME /home
 RUN mkdir /build
 WORKDIR /build
 CMD bash
