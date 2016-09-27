@@ -1,7 +1,7 @@
 FROM snapcraft/ubuntu-base:amd64-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.18
+ENV SNAPCRAFT_VERSION=2.15
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list

@@ -1,7 +1,7 @@
 FROM snapcraft/ubuntu-base:amd64-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.18
+ENV SNAPCRAFT_VERSION=2.18.1
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
@@ -14,8 +14,8 @@ RUN apt-get install -y --no-install-recommends \
         devscripts \
         equivs \
         git \
-	ca-certificates \
-	curl
+        ca-certificates \
+        curl
 
 RUN git clone --depth 1 --branch ${SNAPCRAFT_VERSION} https://github.com/snapcore/snapcraft \
  && cd snapcraft \
@@ -31,6 +31,7 @@ RUN rm -rf /tmp/* /var/tmp/*
 RUN apt-get install -y sudo
 RUN echo "ALL ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers.d/apt-get \
  && chmod 0440 /etc/sudoers.d/apt-get
+
 # sudo requires a pw entry
 RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
 
@@ -39,6 +40,7 @@ RUN apt-get clean
 
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
+
 VOLUME /build
 WORKDIR /build
 
