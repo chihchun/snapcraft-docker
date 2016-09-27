@@ -42,7 +42,7 @@ If you like to build arm target snap on amd64 hardware platform, please install 
     sudo apt-get install qemu-user-static
 
 # Known issue
-* Your user id on docker host must be between 1000-1100 to be able to use _sudo apt-get_ from snapcraft.
+* Your user id on docker host must be between 500-1100 to be able to use _sudo apt-get_ from snapcraft.
 * docker will create the volume folder with root permission, which will leave ./.local/share/snapcraft and ./snap in current build folder.
 * snapcraft will generate amd64 named snap in i386 container, if you are running from amd64 docker host.
 

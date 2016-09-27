@@ -38,7 +38,7 @@ RUN apt-get install -y sudo
 RUN echo "ALL ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers.d/apt-get \
  && chmod 0440 /etc/sudoers.d/apt-get
 # sudo requires a pw entry
-RUN for i in $(seq 1000 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
+RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
 
 # Clean up
 RUN apt-get clean

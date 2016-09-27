@@ -8,7 +8,7 @@ RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
 RUN apt-get update
 
-# build and install snapcraft 
+# build and install snapcraft
 WORKDIR /tmp
 RUN apt-get install -y --no-install-recommends \
         devscripts \
@@ -24,7 +24,7 @@ RUN git clone --depth 1 --branch ${SNAPCRAFT_VERSION} https://github.com/snapcor
  && apt-get install -y ../*.deb \
  && apt-get remove --purge -y devscripts equivs git python3-fixtures python3-responses python3-setuptools python3-testscenarios python3-testtools \
  && apt-get autoremove -y \
- && apt-get clean -y 
+ && apt-get clean -y
 RUN rm -rf /tmp/* /var/tmp/*
 
 # Setup sudo for apt-get
@@ -32,7 +32,7 @@ RUN apt-get install -y sudo
 RUN echo "ALL ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers.d/apt-get \
  && chmod 0440 /etc/sudoers.d/apt-get
 # sudo requires a pw entry
-RUN for i in $(seq 1000 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
+RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
 
 # Clean up
 RUN apt-get clean
