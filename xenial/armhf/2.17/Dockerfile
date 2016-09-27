@@ -10,25 +10,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends \
-		ca-certificates \
-		curl \
-		wget
-
-# SCM
-RUN apt-get install -y --no-install-recommends \
- bzr \
- git                 \
- openssh-client \
- subversion \
- mercurial \
- \
- procps
-
-# build-essential
-RUN apt-get install -y --no-install-recommends vim-tiny
-RUN apt-get install -y --no-install-recommends \
-         build-essential
 
 # snapcraft
 RUN apt-get install -y snapcraft=${SNAPCRAFT_VERSION}
