@@ -39,7 +39,7 @@ RUN apt-get clean
 
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
-RUN mkdir /build
+VOLUME /build
 WORKDIR /build
 
 ADD docker-entrypoint.sh /usr/local/bin
