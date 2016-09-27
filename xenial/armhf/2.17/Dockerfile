@@ -47,4 +47,7 @@ RUN apt-get clean
 ENV HOME /home
 RUN mkdir /build
 WORKDIR /build
-CMD bash
+
+ADD docker-entrypoint.sh /usr/local/bin
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]

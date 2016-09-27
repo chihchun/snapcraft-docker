@@ -16,7 +16,7 @@ You can run the docker image by
     alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
     	-v ${HOME}/.snap:/home/.snap \
     	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
-    	snapcraft/xenial-amd64 snapcraft'
+    	snapcraft/xenial-amd64'
 
     snapcraft-docker tour
     cd snapcraft-tour/00-SNAPCRAFT/01-easy-start && snapcraft-docker
@@ -31,7 +31,7 @@ You can run the armhf and arm64 images on native arm architecture platform.
     alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
     	-v ${HOME}/.snap:/home/.snap \
     	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
-    	snapcraft/xenial-arm64 snapcraft'
+    	snapcraft/xenial-arm64'
 
     snapcraft-docker tour
     cd snapcraft-tour/00-SNAPCRAFT/01-easy-start && snapcraft-docker

@@ -33,6 +33,7 @@ RUN apt-get install -y snapcraft=${SNAPCRAFT_VERSION}
 RUN apt-get install -y sudo
 RUN echo "ALL ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers.d/apt-get \
  && chmod 0440 /etc/sudoers.d/apt-get
+
 # sudo requires a pw entry
 RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
 
@@ -41,6 +42,10 @@ RUN apt-get clean
 
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
+
 RUN mkdir /build
 WORKDIR /build
-CMD bash
+
+ADD docker-entrypoint.sh /usr/local/bin
+RUN chmod 755 /usr/local/bin/docker-entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
