@@ -11,31 +11,29 @@ Supported architectures
 
 # Usage
 
-You can run the docker image by using a alias command.
+You can run the docker image by using this script
 
-    alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
-    	-v ${HOME}/.snap:/home/.snap \
-    	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
-    	snapcraft/xenial-amd64'
+    # Download & Install
+    wget https://raw.githubusercontent.com/chihchun/snapcraft-docker/master/snapcraft-docker
+    chmod u+x snapcraft-docker
+    export PATH=${PWD}:$PATH
 
+    # Use the snapcraft command
     snapcraft-docker -v
     snapcraft-docker -h
 
     snapcraft-docker tour
     cd snapcraft-tour/00-SNAPCRAFT/01-easy-start && snapcraft-docker
 
-You can replace amd64 with i386, to build i386 snap on amd64 hardware platform.
+If you like to build i386 snap on amd64 hardware platform, please run the command
+    ARCH=i386 snapcraft-docker
 
 ## On ARM platform
 
 You can run the armhf and arm64 images on native arm architecture platform.
 
     # Running arm64 image
-    alias snapcraft-docker='docker run -u $(id -u) -t -i --rm -v $(pwd):/build  \
-    	-v ${HOME}/.snap:/home/.snap \
-    	-v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
-    	snapcraft/xenial-arm64'
-
+    export ARCH=arm64
     snapcraft-docker tour
     cd snapcraft-tour/00-SNAPCRAFT/01-easy-start && snapcraft-docker
 
@@ -58,7 +56,3 @@ You can a shell in the container, and run the following command to build a prime
 * snapcraft will generate amd64 named snap in i386 container, if you are running from amd64 docker host.
 
 Please report issues to https://github.com/chihchun/snapcraft-docker/issues
-# TODO
-* Support build multi-architecture snap.
-* Include Cross build toolchains for arm platform enablement in amd64 image.
-* Include ubuntu-image tooling for creating new image for arm platform.

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+VERSION="${VERSION:-latest}"
+
+ARCH="${ARCH:-$(uname -m)}"
+if [ ${ARCH} = "x86_64" ] ; then
+    ARCH=amd64
+fi
+
+UID="${UID:-$(id -u)}"
+
+docker run -u ${UID} -t -i --rm -v $(pwd):/build \
+    -v ${HOME}/.snap:/home/.snap \
+    -v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
+    -v ${HOME}/.cache/snapcraft:/home/.cache/snapcraft \
+    -v ${HOME}/.config/snapcraft:/home/.config/snapcraft \
+    snapcraft/xenial-${ARCH}:${VERSION} $@
