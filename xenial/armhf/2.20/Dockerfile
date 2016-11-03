@@ -46,6 +46,9 @@ RUN apt-get clean
 
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
+RUN chgrp -R 100 /home \
+ && chmod g+rwx /home
+
 VOLUME /build
 WORKDIR /build
 
