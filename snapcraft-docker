@@ -10,6 +10,7 @@ fi
 UID="${UID:-$(id -u)}"
 
 docker run -u ${UID} -t -i --rm -v $(pwd):/build \
+    --privileged=true \
     -v ${HOME}/.snap:/home/.snap \
     -v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
     -v ${HOME}/.cache/snapcraft:/home/.cache/snapcraft \
