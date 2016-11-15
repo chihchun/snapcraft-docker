@@ -1,10 +1,10 @@
-FROM snapcraft/ubuntu-base:armhf-16.04.1
+FROM snapcraft/ubuntu-base:arm64-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.21
+ENV SNAPCRAFT_VERSION=2.22
 
 # qemu-user-static
-ADD qemu-arm-static /usr/bin/qemu-arm-static
+ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
@@ -37,7 +37,6 @@ RUN rm -rf /tmp/* /var/tmp/*
 RUN apt-get install -y sudo
 RUN echo "ALL ALL=NOPASSWD: /usr/bin/apt-get" >> /etc/sudoers.d/apt-get \
  && chmod 0440 /etc/sudoers.d/apt-get
-
 # sudo requires a pw entry
 RUN for i in $(seq 500 1100); do echo snapper:x:$i:100:a build user:/build:/bin/bash ; done | tee -a /etc/passwd
 

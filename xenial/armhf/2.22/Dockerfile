@@ -1,7 +1,7 @@
 FROM snapcraft/ubuntu-base:armhf-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.21
+ENV SNAPCRAFT_VERSION=2.22
 
 # qemu-user-static
 ADD qemu-arm-static /usr/bin/qemu-arm-static
