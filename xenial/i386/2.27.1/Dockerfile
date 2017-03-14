@@ -1,7 +1,7 @@
 FROM snapcraft/ubuntu-base:i386-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.27.1.1
+ENV SNAPCRAFT_VERSION=2.27.1
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
