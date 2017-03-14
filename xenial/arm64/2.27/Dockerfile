@@ -1,7 +1,7 @@
 FROM snapcraft/ubuntu-base:arm64-16.04.1
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
-ENV SNAPCRAFT_VERSION=2.27
+ENV SNAPCRAFT_VERSION=2.27.1
 
 # qemu-user-static
 ADD qemu-aarch64-static /usr/bin/qemu-aarch64-static
