@@ -4,12 +4,12 @@ VERSION="${VERSION:-latest}"
 
 ARCH="${ARCH:-$(uname -m)}"
 if [ ${ARCH} = "x86_64" ] ; then
-    ARCH=amd64
+    ARCH="amd64"
 fi
 
-UID="${USERID:-$(id -u)}"
+USERID="${USERID:-$(id -u)}"
 
-docker run -u ${UID} -t -i --rm -v $(pwd):/build \
+docker run -u ${USERID} -t -i --rm -v $(pwd):/build \
     --privileged=true \
     -v ${HOME}/.snap:/home/.snap \
     -v ${HOME}/.local/share/snapcraft:/home/.local/share/snapcraft \
