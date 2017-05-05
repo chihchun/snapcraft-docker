@@ -19,7 +19,7 @@ RUN git clone --depth 1 --branch ${UBUNTUIMAGE_VERSION} https://github.com/Canon
  && ln -s /usr/bin/ubuntu-image /snap/bin/ubuntu-image
 
 RUN mknod /dev/loop0 b 7 0
-RUN echo "ALL ALL=NOPASSWD: /snap/bin/ubuntu-image, /bin/mount" >> /etc/sudoers.d/ubuntu-image \
+RUN echo "ALL ALL=NOPASSWD: /snap/bin/ubuntu-image, /bin/mount, /bin/umount, /bin/cp" >> /etc/sudoers.d/ubuntu-image \
  && chmod 0440 /etc/sudoers.d/ubuntu-image
 
 # Install toolchins
