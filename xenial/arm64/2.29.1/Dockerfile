@@ -1,4 +1,4 @@
-FROM snapcraft/ubuntu-base:arm64-16.04.1
+FROM snapcraft/ubuntu-base:arm64-16.04.2
 MAINTAINER Rex Tsai "http://about.me/chihchun"
 
 ENV SNAPCRAFT_VERSION=2.29.1
