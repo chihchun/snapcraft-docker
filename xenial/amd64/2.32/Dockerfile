@@ -19,6 +19,7 @@ RUN apt-get install -y --no-install-recommends \
 
 RUN git clone --depth 1 --branch ${SNAPCRAFT_VERSION} https://github.com/snapcore/snapcraft \
  && cd snapcraft \
+ && rm -f snapcraft/tests/plugins/test_rust.py \
  && mk-build-deps debian/control -i --tool 'apt-get -y --no-install-recommends' \
  && dpkg-buildpackage -us -uc \
  && apt-get install -y ../*.deb \
