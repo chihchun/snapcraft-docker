@@ -20,7 +20,7 @@ shift $((OPTIND-1))
 run_snapcraft () {
     LAST=$(($(date +%s) - $(date +%s -r /var/cache/apt/archives/lock)))
     # update APT if the image is older than one month
-    if [ $force_update == 1 ] || [ $LAST -ge 2592000 ] ; then
+    if [ $force_update -eq 1 ] || [ $LAST -ge 2592000 ] ; then
         sudo apt-get update
     fi
     exec snapcraft $@
