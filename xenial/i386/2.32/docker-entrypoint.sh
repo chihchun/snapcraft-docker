@@ -8,7 +8,7 @@ run_snapcraft () {
     if [ $LAST -qe 2592000 ] ; then
         sudo apt-get update
     fi
-    exec sanpcraft $@
+    exec snapcraft $@
 }
 
 if [ -z $1 ] ; then
