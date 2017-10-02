@@ -6,7 +6,8 @@ ENV SNAPCRAFT_VERSION=2.34
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list
-RUN apt-get update
+RUN apt-get update \
+ && apt-get full-upgrade -y
 
 # build and install snapcraft
 WORKDIR /tmp
