@@ -1,7 +1,10 @@
-FROM alexcohn/ubuntu-base:amd64-16.04.3
+FROM alexcohn/ubuntu-base:armhf-16.04.3
 MAINTAINER Alex Cohn "https://github.com/acohn"
 
 ENV SNAPCRAFT_VERSION=2.34
+
+# qemu-user-static
+ADD qemu-arm-static /usr/bin/qemu-arm-static
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN sed -i "/^# deb.*universe/ s/^# //" /etc/apt/sources.list
@@ -14,15 +17,17 @@ RUN apt-get install -y --no-install-recommends \
         devscripts \
         equivs \
         git \
-        ca-certificates \
-        curl
+	ca-certificates \
+	curl
 
-RUN git clone --depth 1 --branch ${SNAPCRAFT_VERSION} https://github.com/snapcore/snapcraft \
- && cd snapcraft \
- && rm -f snapcraft/tests/plugins/test_rust.py \
+RUN git clone --depth 1 --branch ${SNAPCRAFT_VERSION} https://github.com/snapcore/snapcraft 
+
+RUN cd snapcraft \
+ && echo "override_dh_auto_test:" >> debian/rules \
  && mk-build-deps debian/control -i --tool 'apt-get -y --no-install-recommends' \
- && dpkg-buildpackage -us -uc \
- && apt-get install -y ../*.deb \
+ && dpkg-buildpackage -us -uc 
+
+RUN apt-get install -y ./*.deb \
  && apt-get remove --purge -y devscripts equivs git python3-fixtures python3-responses python3-setuptools python3-testscenarios python3-testtools \
  && apt-get autoremove -y \
  && apt-get clean -y
@@ -42,7 +47,7 @@ RUN apt-get clean
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
 RUN chgrp -R 100 /home \
- && chmod -R g+rwx /home
+ && chmod g+rwx /home
 
 VOLUME /build
 WORKDIR /build

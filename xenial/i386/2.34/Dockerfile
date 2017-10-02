@@ -1,4 +1,4 @@
-FROM alexcohn/ubuntu-base:amd64-16.04.3
+FROM alexcohn/ubuntu-base:i386-16.04.3
 MAINTAINER Alex Cohn "https://github.com/acohn"
 
 ENV SNAPCRAFT_VERSION=2.34
@@ -42,7 +42,7 @@ RUN apt-get clean
 # snapcraft need to save configs in ${HOME}/.local
 ENV HOME /home
 RUN chgrp -R 100 /home \
- && chmod -R g+rwx /home
+ && chmod g+rwx /home
 
 VOLUME /build
 WORKDIR /build
