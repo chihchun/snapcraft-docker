@@ -28,7 +28,8 @@ RUN apt-get install -y build-essential u-boot-tools lzop debootstrap \
     gcc-arm-linux-gnueabihf \
     gcc-4.8 \
     gcc-4.8-arm-linux-gnueabihf \
-    device-tree-compiler
+    device-tree-compiler \
+    bc
 
 # change the default gcc to 4.8, since old kernel need old gcc.
 RUN update-alternatives --install /usr/bin/gcc gcc  /usr/bin/gcc-5 50 \
