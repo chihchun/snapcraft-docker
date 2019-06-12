@@ -6,6 +6,9 @@ ARCH="${ARCH:-$(uname -m)}"
 if [ ${ARCH} = "x86_64" ] ; then
     ARCH="amd64"
 fi
+if [ ${ARCH} = "armv7l" ] ; then
+    ARCH="armhf"
+fi
 
 USERID="${USERID:-$(id -u)}"
 
